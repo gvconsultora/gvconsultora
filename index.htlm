@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GV Consultora | Sistemas de Gestión y Calidad</title>
+  <meta name="description" content="GV Consultora - Asesoría externa en sistemas de gestión, documentación BPM y POES, certificaciones ISO 9001, auditorías de calidad e inocuidad, gestión de RRHH y control de producción o servicios." />
+  <style>
+    :root {
+      --rojo: #c0392b;
+      --rojo-oscuro: #962d21;
+      --gris-oscuro: #333333;
+      --gris-medio: #777777;
+      --gris-claro: #f5f5f5;
+      --blanco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--gris-claro);
+      color: var(--gris-oscuro);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rojo);
+    }
+
+    .logo span {
+      color: var(--gris-oscuro);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      margin-left: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--gris-oscuro);
+      padding-bottom: 0.2rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--rojo);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--rojo);
+      color: var(--blanco);
+      box-shadow: 0 10px 20px rgba(192, 57, 43, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--rojo-oscuro);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(192, 57, 43, 0.3);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--gris-oscuro);
+      color: var(--gris-oscuro);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--gris-oscuro);
+      color: var(--blanco);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0 4rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 45%, #f2f2f2 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      color: var(--rojo);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--gris-oscuro);
+    }
+
+    .hero-title span {
+      color: var(--rojo);
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--gris-medio);
+      margin-bottom: 1.5rem;
+      max-width: 32rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-card {
+      background: var(--blanco);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eeeeee;
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--gris-oscuro);
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--gris-oscuro);
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-list span.bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--rojo);
+      margin-top: 0.3rem;
+      flex-shrink: 0;
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-header {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--gris-oscuro);
+    }
+
+    .section-subtitle {
+      font-size: 0.96rem;
+      color: var(--gris-medio);
+      max-width: 34rem;
+    }
+
+    /* GRID SERVICIOS */
+    .columns-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .text-block p {
+      font-size: 0.95rem;
+      color: var(--gris-medio);
+      margin-bottom: 1rem;
+    }
+
+    .text-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .text-block ul li::before {
+      content: "• ";
+      color: var(--rojo);
+      font-weight: 700;
+    }
+
+    .card-muted {
+      background: var(--blanco);
+      border-radius: 1.1rem;
+      padding: 1.4rem;
+      border: 1px solid #e8e8e8;
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+    }
+
+    /* CARDS SERVICIOS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--blanco);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      border: 1px solid #ececec;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--gris-oscuro);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+      margin-bottom: 0.5rem;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--gris-oscuro);
+      padding-left: 0;
+    }
+
+    .card ul li::before {
+      content: "– ";
+      color: var(--rojo);
+    }
+
+    /* TIMELINE / METODOLOGÍA */
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      border-left: 2px solid #e0e0e0;
+      margin-left: 0.7rem;
+    }
+
+    .timeline li {
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--rojo);
+      position: absolute;
+      left: -6px;
+      top: 4px;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--gris-oscuro);
+    }
+
+    .timeline-text {
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+    }
+
+    /* CONTACTO */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      color: var(--gris-medio);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      font-size: 0.92rem;
+      color: var(--gris-oscuro);
+    }
+
+    .contact-info ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .form-card {
+      background: var(--blanco);
+      border-radius: 1.1rem;
+      padding: 1.5rem;
+      border: 1px solid #eaeaea;
+    }
+
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+      color: var(--gris-oscuro);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid #dddddd;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    footer {
+      padding: 1.5rem 0;
+      background: #ffffff;
+      border-top: 1px solid #e5e5e5;
+      font-size: 0.85rem;
+      color: var(--gris-medio);
+    }
+
+    footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .columns-2,
+      .cards-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2.3rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          GV Consultora <span>Gestión &amp; Calidad</span>
+        </div>
+        <div class="nav-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#metodologia">Metodología</a>
+          <a href="#capacitaciones">Capacitaciones</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/543585101252" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker">Consultoría en gestión &amp; calidad</div>
+          <h1 class="hero-title">
+            Sistemas de gestión y personas <span>trabajando alineadas</span>.
+          </h1>
+          <p class="hero-subtitle">
+            Acompañamos a tu empresa a ordenar procesos, profesionalizar la gestión
+            y preparar certificaciones con un enfoque práctico, claro y humano.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#servicios" class="btn btn-primary">Ver servicios</a>
+            <a href="https://wa.me/543585101252" target="_blank" rel="noopener" class="btn btn-outline">
+              Escribinos por WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span>📍 Río Cuarto, Córdoba – Argentina</span>
+            <span>📞 +54 358 510-1252</span>
+            <span>📸 Instagram: @gvconsultora</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>¿En qué podemos ayudarte?</h3>
+          <p>Trabajamos especialmente con PYMES y empresas en crecimiento que necesitan:</p>
+          <ul class="hero-list">
+            <li><span class="bullet"></span>Implementar o mejorar su sistema de gestión.</li>
+            <li><span class="bullet"></span>Prepararse para auditorías y certificaciones.</li>
+            <li><span class="bullet"></span>Ordenar procesos, roles y responsabilidades.</li>
+            <li><span class="bullet"></span>Contar con herramientas simples para controlar la operación.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- QUE HACEMOS -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Qué hacemos</div>
+          <h2 class="section-title">Asesoría integral en sistemas de gestión y calidad</h2>
+          <p class="section-subtitle">
+            Diseñamos, documentamos e implementamos sistemas de gestión adaptados a tu realidad,
+            alineando procesos, personas e información para que la empresa crezca de forma ordenada.
+          </p>
+        </div>
+
+        <div class="columns-2">
+          <div class="text-block">
+            <p>Desde GV Consultora acompañamos a tu organización en:</p>
+            <ul>
+              <li>Diseño e implementación de <strong>sistemas de gestión</strong>.</li>
+              <li>Documentación y puesta en marcha de <strong>BPM y POES</strong> para la industria alimentaria.</li>
+              <li>Preparación y acompañamiento para <strong>certificaciones ISO 9001</strong>.</li>
+              <li><strong>Auditorías internas</strong> de calidad e inocuidad.</li>
+              <li><strong>Gestión de RRHH</strong> y mejora del clima laboral.</li>
+              <li>Desarrollo de <strong>controles de producción y servicios</strong> con indicadores claros.</li>
+            </ul>
+          </div>
+          <div class="card-muted">
+            <p>
+              Nuestro foco está en que cada herramienta tenga sentido para tu operación:
+              menos burocracia, más gestión real.
+            </p>
+            <p>
+              Trabajamos con lenguaje claro, ejemplos concretos y plantillas listas para usar,
+              para que el cambio se note en el día a día.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDS SERVICIOS -->
+    <section>
+      <div class="container">
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Sistemas de gestión &amp; ISO 9001</h3>
+            <p>Ordenamos y formalizamos tus procesos clave para auditar y mejorar.</p>
+            <ul>
+              <li>Diseño de sistema de gestión.</li>
+              <li>Mapeo de procesos y documentación.</li>
+              <li>Acompañamiento a certificaciones.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Calidad e inocuidad alimentaria</h3>
+            <p>Herramientas para garantizar productos seguros y confiables.</p>
+            <ul>
+              <li>Manual y registros BPM.</li>
+              <li>Procedimientos POES.</li>
+              <li>Auditorías internas y a proveedores.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Gestión de RRHH</h3>
+            <p>Personas alineadas con los objetivos y la cultura de la empresa.</p>
+            <ul>
+              <li>Perfiles de puesto y organigramas.</li>
+              <li>Procesos de selección básicos.</li>
+              <li>Evaluación de desempeño e indicadores.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Procesos &amp; control operativo</h3>
+            <p>Información confiable para decidir y controlar la operación.</p>
+            <ul>
+              <li>Estandarización de procesos.</li>
+              <li>Tableros simples de control.</li>
+              <li>Indicadores clave (KPIs).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" style="background: #ffffff;">
+      <div class="container">
+        <div class="columns-2">
+          <div>
+            <div class="section-header">
+              <div class="section-kicker">Sobre GV Consultora</div>
+              <h2 class="section-title">Un puente entre la teoría y la práctica</h2>
+            </div>
+            <p style="font-size:0.95rem; color:#777;">
+              GV Consultora nace con el objetivo de acercar herramientas de gestión profesional
+              a empresas que muchas veces no cuentan con un departamento interno de calidad o RRHH,
+              pero sí con la necesidad de ordenar, crecer y sostener sus resultados.
+            </p>
+            <p style="font-size:0.95rem; color:#777; margin-top:0.6rem;">
+              Integramos conocimiento técnico en normas y sistemas de gestión, con experiencia en
+              campo y una mirada humana sobre las personas que llevan adelante los procesos.
+            </p>
+          </div>
+          <div class="card-muted">
+            <p><strong>¿Qué nos define?</strong></p>
+            <ul style="margin-top:0.4rem; list-style:none; padding-left:0; font-size:0.9rem;">
+              <li>• Lenguaje claro y aplicable.</li>
+              <li>• Plantillas y herramientas listas para usar.</li>
+              <li>• Acompañamiento cercano y paso a paso.</li>
+              <li>• Foco en resultados concretos, no solo en papeles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODOLOGIA -->
+    <section id="metodologia">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Metodología</div>
+          <h2 class="section-title">Cómo trabajamos con tu empresa</h2>
+          <p class="section-subtitle">
+            Buscamos que cada proyecto sea ordenado, medible y sostenible en el tiempo.
+            Por eso, seguimos una metodología clara que se adapta a tu contexto.
+          </p>
+        </div>
+
+        <div class="columns-2">
+          <div>
+            <ul class="timeline">
+              <li>
+                <div class="timeline-title">1. Diagnóstico inicial</div>
+                <div class="timeline-text">
+                  Relevamos tu situación actual, procesos, documentación y forma de trabajo.
+                  Identificamos fortalezas, brechas y riesgos.
+                </div>
+              </li>
+              <li>
+                <div class="timeline-title">2. Plan de acción</div>
+                <div class="timeline-text">
+                  Priorizamos lo importante, definimos etapas, responsables y tiempos realistas
+                  para cada mejora.
+                </div>
+              </li>
+              <li>
+                <div class="timeline-title">3. Implementación acompañada</div>
+                <div class="timeline-text">
+                  Trabajamos junto a tu equipo para bajar a la práctica los procedimientos,
+                  registros y herramientas de gestión.
+                </div>
+              </li>
+              <li>
+                <div class="timeline-title">4. Capacitación al equipo</div>
+                <div class="timeline-text">
+                  Capacitaciones concretas y dinámicas para asegurar comprensión y compromiso
+                  de quienes operan el sistema.
+                </div>
+              </li>
+              <li>
+                <div class="timeline-title">5. Seguimiento y mejora continua</div>
+                <div class="timeline-text">
+                  Ajustamos lo necesario, definimos indicadores y dejamos criterios claros
+                  para sostener la mejora en el tiempo.
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-muted">
+            <p>
+              Cada empresa es distinta, por eso adaptamos la metodología a tu tamaño,
+              sector y recursos disponibles. El objetivo es que el sistema funcione para vos
+              y no al revés.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPACITACIONES -->
+    <section id="capacitaciones" style="background:#ffffff;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Capacitaciones</div>
+          <h2 class="section-title">Formación a medida para tu equipo</h2>
+          <p class="section-subtitle">
+            Diseñamos talleres y capacitaciones in company para que tu equipo incorpore herramientas
+            de gestión aplicables al trabajo diario.
+          </p>
+        </div>
+
+        <div class="columns-2">
+          <div class="text-block">
+            <p>Algunos ejes de trabajo:</p>
+            <ul>
+              <li>Uso básico y aplicado de <strong>Excel</strong> para gestión y control.</li>
+              <li>Capacitaciones en <strong>calidad e inocuidad</strong> para la industria alimentaria.</li>
+              <li>Talleres sobre <strong>roles, responsabilidades y trabajo en equipo</strong>.</li>
+              <li>Introducción a <strong>sistemas de gestión y mejora continua</strong>.</li>
+            </ul>
+          </div>
+          <div class="card-muted">
+            <p>
+              Cada capacitación se adapta al nivel de los participantes, combinando explicación teórica,
+              ejemplos prácticos y ejercicios guiados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Contacto</div>
+          <h2 class="section-title">Hablemos sobre lo que tu empresa necesita</h2>
+          <p class="section-subtitle">
+            Contanos brevemente en qué situación se encuentra tu empresa y qué te gustaría mejorar.
+            Te responderemos con una propuesta de trabajo ajustada a tu realidad.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p><strong>Datos de contacto</strong></p>
+            <ul>
+              <li>📞 Teléfono / WhatsApp: <a href="https://wa.me/543585101252" target="_blank" rel="noopener">+54 358 510-1252</a></li>
+              <li>📸 Instagram: @gvconsultora</li>
+              <li>📍 Río Cuarto, Córdoba – Argentina</li>
+            </ul>
+            <p style="margin-top:0.8rem;">
+              También podés escribirnos por WhatsApp haciendo clic en el botón,
+              y coordinamos una reunión para entender mejor tu necesidad.
+            </p>
+            <a href="https://wa.me/543585101252" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:0.5rem;">
+              Escribinos por WhatsApp
+            </a>
+          </div>
+
+          <div class="form-card">
+            <form>
+              <div class="form-group">
+                <label for="empresa">Nombre de la empresa</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Ej: ANASOF S.A." />
+              </div>
+              <div class="form-group">
+                <label for="nombre">Nombre y apellido</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" />
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+54 ..." />
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje / Necesidad principal</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Contanos brevemente qué te gustaría mejorar o implementar."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Enviar consulta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>© <span id="year"></span> GV Consultora. Todos los derechos reservados.</div>
+      <div class="footer-links">
+        <span>Gestión &amp; Calidad</span>
+        <span>•</span>
+        <span>Río Cuarto, Córdoba – Argentina</span>
+      </div>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
