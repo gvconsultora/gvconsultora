@@ -62,16 +62,12 @@
       text-transform: uppercase;
       color: var(--rojo);
     }
-
-    .logo span {
-      color: var(--gris-oscuro);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      text-transform: none;
-      margin-left: 0.35rem;
-      font-size: 0.9rem;
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
     }
-
+    
     .nav-links {
       display: flex;
       gap: 1.25rem;
@@ -488,7 +484,9 @@
     <div class="container">
       <nav class="nav">
         <div class="logo">
+          <a href="#inicio">
           <img src="logo-gv.png" alt="GV Consultora" style="height: 45px;">
+        </a>
         </div>
         <div class="nav-links">
           <a href="#servicios">Servicios</a>
