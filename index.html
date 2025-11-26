@@ -890,18 +890,7 @@
 
       <!-- FORMULARIO DE CONTACTO -->
       <div class="form-card">
-         <!-- CARTEL DE ÉXITO -->
-      <div id="form-success" 
-       style="display:none; 
-              padding:12px; 
-              background:#e6f8e8; 
-              border-left:4px solid #2ecc71; 
-              color:#2d7a41; 
-              margin-bottom:15px; 
-              border-radius:4px;
-              font-size:0.9rem;">
-    ✔ Consulta enviada correctamente. ¡Gracias por contactarte!
-  </div>
+        
        <form action="https://formsubmit.co/gvconsultorar4@gmail.com" method="POST">
   <div class="form-group">
     <label for="empresa">Nombre de la empresa</label>
@@ -943,6 +932,34 @@
     </div>
   </div>
 </section>
+    <!-- TOAST DE ÉXITO -->
+<div id="toast" 
+     style="display:none; 
+            position:fixed; 
+            bottom:20px; 
+            right:20px; 
+            background:#2ecc71; 
+            padding:14px 18px; 
+            color:white; 
+            border-radius:6px; 
+            box-shadow:0 2px 8px rgba(0,0,0,0.2); 
+            font-size:0.9rem;
+            z-index:9999;">
+    ✔ Consulta enviada correctamente
+</div>
+
+<script>
+  const form = document.getElementById("contactForm");
+  form.addEventListener("submit", function() {
+    const toast = document.getElementById("toast");
+    toast.style.display = "block";
+
+    // Desaparece a los 3.5 segundos
+    setTimeout(() => toast.style.display = "none", 3500); 
+  });
+</script>
+
+
 
   <footer>
     <div class="container footer-content">
