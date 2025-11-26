@@ -949,14 +949,24 @@
 </div>
 
 <script>
-  const form = document.getElementById("contactForm");
-  form.addEventListener("submit", function() {
-    const toast = document.getElementById("toast");
-    toast.style.display = "block";
+  // Mostrar el toast si la URL trae ?success=1
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === '1') {
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 3500);
+      }
 
-    // Desaparece a los 3.5 segundos
-    setTimeout(() => toast.style.display = "none", 3500); 
-  });
+      // Opcional: limpiar el ?success=1 de la URL para que no vuelva a aparecer al refrescar
+      if (window.history.replaceState) {
+        params.delete('success');
+        const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        window.history.replaceState({}, '', newUrl);
+      }
+    }
+  })();
 </script>
 
 
