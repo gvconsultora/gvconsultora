@@ -889,46 +889,45 @@
       </div>
 
       <!-- FORMULARIO DE CONTACTO -->
-      <div class="form-card">
+<div class="form-card">
         
-       <form action="https://formsubmit.co/gvconsultorar4@gmail.com" method="POST">
-  <div class="form-group">
-    <label for="empresa">Nombre de la empresa</label>
-    <input type="text" id="empresa" name="empresa" placeholder="Ej: TU EMPRESA S.A." required />
-  </div>
+  <form id="contactForm" action="https://formsubmit.co/gvconsultorar4@gmail.com" method="POST">
+    <div class="form-group">
+      <label for="empresa">Nombre de la empresa</label>
+      <input type="text" id="empresa" name="empresa" placeholder="Ej: TU EMPRESA S.A." required />
+    </div>
 
-  <div class="form-group">
-    <label for="nombre">Nombre y apellido</label>
-    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-  </div>
+    <div class="form-group">
+      <label for="nombre">Nombre y apellido</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+    </div>
 
-  <div class="form-group">
-    <label for="email">Correo electrónico</label>
-    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
-  </div>
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+    </div>
 
-  <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input type="tel" id="telefono" name="telefono" placeholder="+54 ..." required />
-  </div>
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="+54 ..." required />
+    </div>
 
-  <div class="form-group">
-    <label for="mensaje">Mensaje / Necesidad principal</label>
-    <textarea id="mensaje" name="mensaje" placeholder="Contanos brevemente qué te gustaría mejorar o implementar." required></textarea>
-  </div>
+    <div class="form-group">
+      <label for="mensaje">Mensaje / Necesidad principal</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Contanos brevemente qué te gustaría mejorar o implementar." required></textarea>
+    </div>
 
-  <!-- Opciones FormSubmit -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_subject" value="Nueva consulta desde la web de GV Consultora">
-  <input type="hidden" name="_next" value="https://gvconsultora.vercel.app/">
-  <input type="hidden" name="_autoresponse" value="¡Gracias por contactarte con GV Consultora! Te responderemos a la brevedad.">
+    <!-- Opciones FormSubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="Nueva consulta desde la web de GV Consultora">
+    <input type="hidden" name="_next" value="https://gvconsultora.vercel.app/?success=1">
+    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarte con GV Consultora! Te responderemos a la brevedad.">
 
-  <button type="submit" class="btn btn-primary" style="width:100%;">Enviar consulta</button>
-</form>
+    <button type="submit" class="btn btn-primary" style="width:100%;">Enviar consulta</button>
+  </form>
 
-      </div>
-
+</div>
     </div>
   </div>
 </section>
